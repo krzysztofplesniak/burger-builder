@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ingridiensAmount, totalPrice } from './burgerSlice';
+import { ingridiensAmount } from './burgerSlice';
 import { calculatePrice } from './burgerSlice';
 import {
 	moreMeat,
@@ -19,19 +19,16 @@ import {
 import styles from './Burger.module.css';
 
 export function BurgerBuilder() {
-	useEffect(() => {
-		console.log('calculatePrice');
-        dispatch(calculatePrice());
-        // eslint-disable-next-line 
-	},);
-
 	const { meat, beacon, chease, onion, cocumber, salat } = useSelector(
 		ingridiensAmount
 	);
 
-	const total = useSelector(totalPrice);
-
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(calculatePrice());
+		// eslint-disable-next-line
+	});
 
 	return (
 		<>
@@ -61,15 +58,16 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreBacon())}>
 					+
 				</button>
-
-				<button
-					className={styles.button}
-					aria-label='More'
-					disabled={beacon === 0}
-					onClick={() => dispatch(lessBacon())}>
-					-
-				</button>
-				<span className={styles.value}>Beacon {beacon}</span>
+				<div className={styles.info}>
+					<button
+						className={styles.button}
+						aria-label='More'
+						disabled={beacon === 0}
+						onClick={() => dispatch(lessBacon())}>
+						-
+					</button>
+					<span className={styles.value}>Beacon {beacon}</span>
+				</div>
 			</div>
 			{/* CHEASE */}
 			<div className={styles.row}>

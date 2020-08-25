@@ -1,5 +1,5 @@
 import React from 'react';
-import { Burger } from './features/burger/Burger';
+import Burger from './features/burger/Burger';
 import './App.css';
 
 function App() {
