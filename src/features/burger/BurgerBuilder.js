@@ -30,8 +30,8 @@ export function BurgerBuilder() {
 
 	return (
 		<>
+			{/* MEAT */}
 			<div className={styles.row}>
-				{/* MEAT */}
 				<button
 					className={styles.button}
 					aria-label='Less'
@@ -43,6 +43,22 @@ export function BurgerBuilder() {
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessMeat())}>
+					-
+				</button>
+			</div>
+			{/* BEACON */}
+			<div className={styles.row}>
+				<button
+					className={styles.button}
+					aria-label='Less'
+					onClick={() => dispatch(moreBacon())}>
+					+
+				</button>
+				<span className={styles.value}>Beacon</span>
+				<button
+					className={styles.button}
+					aria-label='More'
+					onClick={() => dispatch(lessBacon())}>
 					-
 				</button>
 			</div>
@@ -62,20 +78,52 @@ export function BurgerBuilder() {
 					-
 				</button>
 			</div>
-			<div className={styles.row}>
-				{/* BEACON */}
 
+			{/* ONION */}
+			<div className={styles.row}>
 				<button
 					className={styles.button}
 					aria-label='Less'
-					onClick={() => dispatch(moreBacon())}>
+					onClick={() => dispatch(moreOnion())}>
 					+
 				</button>
-				<span className={styles.value}>Chease</span>
+				<span className={styles.value}>Onion</span>
 				<button
 					className={styles.button}
 					aria-label='More'
-					onClick={() => dispatch(lessBacon())}>
+					onClick={() => dispatch(lessOnion())}>
+					-
+				</button>
+			</div>
+			{/* COCUMBER */}
+			<div className={styles.row}>
+				<button
+					className={styles.button}
+					aria-label='Less'
+					onClick={() => dispatch(moreCocummber())}>
+					+
+				</button>
+				<span className={styles.value}>Cocummber</span>
+				<button
+					className={styles.button}
+					aria-label='More'
+					onClick={() => dispatch(lessCocummber())}>
+					-
+				</button>
+			</div>
+			{/* SALAT */}
+			<div className={styles.row}>
+				<button
+					className={styles.button}
+					aria-label='Less'
+					onClick={() => dispatch(moreSalat())}>
+					+
+				</button>
+				<span className={styles.value}>Salat</span>
+				<button
+					className={styles.button}
+					aria-label='More'
+					onClick={() => dispatch(lessSalat())}>
 					-
 				</button>
 			</div>

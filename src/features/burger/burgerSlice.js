@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const burgerSlice = createSlice({
 	name: 'burger',
 	initialState: {
-        ingredientsAmount: {
-			meat: 1,
+		ingredientsAmount: {
+			meat: 0,
 			beacon: 0,
 			chease: 0,
 			salat: 0,
@@ -24,46 +24,46 @@ export const burgerSlice = createSlice({
 		error: [],
 	},
 	reducers: {
-		moreBacon: state => {
-			state.bacon += 1;
-		},
-		lessdBacon: state => {
-			state.bacon -= 1;
-		},
-
 		moreMeat: state => {
-			state.meat += 1;
+			state.ingredientsAmount.meat += 1;
 		},
 		lessMeat: state => {
-			state.meat -= 1;
+			state.ingredientsAmount.meat -= 1;
+		},
+
+		moreBacon: state => {
+			state.ingredientsAmount.beacon += 1;
+		},
+		lessBacon: state => {
+			state.ingredientsAmount.beacon -= 1;
 		},
 
 		moreChease: state => {
-			state.chease += 1;
+			state.ingredientsAmount.chease += 1;
 		},
 		lessChease: state => {
-			state.chease -= 1;
+			state.ingredientsAmount.chease -= 1;
 		},
 
 		moreSalat: state => {
-			state.salat += 1;
+			state.ingredientsAmount.salat += 1;
 		},
 		lessSalat: state => {
-			state.salat -= 1;
+			state.ingredientsAmount.salat -= 1;
 		},
 
 		moreCocummber: state => {
-			state.cocummber += 1;
+			state.ingredientsAmount.cocummber += 1;
 		},
 		lessCocummber: state => {
-			state.cocummber -= 1;
+			state.ingredientsAmount.cocummber -= 1;
 		},
 
 		moreOnion: state => {
-			state.onion += 1;
+			state.ingredientsAmount.onion += 1;
 		},
 		lessOnion: state => {
-			state.onion -= 1;
+			state.ingredientsAmount.onion -= 1;
 		},
 
 		calculatePrice: state => {},
@@ -87,7 +87,6 @@ export const {
 	moreSalat,
 	lessSalat,
 } = burgerSlice.actions;
-
 
 export const ingridiensAmount = state => state.burger.ingredientsAmount;
 export const ingridiensPrice = state => state.burger.ingridiensPrice;
