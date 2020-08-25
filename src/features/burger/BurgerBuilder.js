@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ingridiensAmount, totalPrice } from './burgerSlice';
-import { orderBurger, calculatePrice } from './burgerSlice';
+import { calculatePrice } from './burgerSlice';
 import {
 	moreMeat,
 	lessMeat,
@@ -11,8 +11,8 @@ import {
 	lessChease,
 	moreOnion,
 	lessOnion,
-	moreCocummber,
-	lessCocummber,
+	moreCocumber,
+	lessCocumber,
 	moreSalat,
 	lessSalat,
 } from './burgerSlice';
@@ -23,9 +23,9 @@ export function BurgerBuilder() {
 		console.log('calculatePrice');
         dispatch(calculatePrice());
         // eslint-disable-next-line 
-	}, [totalPrice]);
+	},);
 
-	const { meat, beacon, chease, onion, cocummber, salat } = useSelector(
+	const { meat, beacon, chease, onion, cocumber, salat } = useSelector(
 		ingridiensAmount
 	);
 
@@ -113,17 +113,17 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='Less'
-					onClick={() => dispatch(moreCocummber())}>
+					onClick={() => dispatch(moreCocumber())}>
 					+
 				</button>
 				<button
 					className={styles.button}
 					aria-label='More'
-					disabled={cocummber === 0}
-					onClick={() => dispatch(lessCocummber())}>
+					disabled={cocumber === 0}
+					onClick={() => dispatch(lessCocumber())}>
 					-
 				</button>
-				<span className={styles.value}>Cocummber {cocummber}</span>
+				<span className={styles.value}>Cocumber {cocumber}</span>
 			</div>
 			{/* SALAT */}
 			<div className={styles.row}>

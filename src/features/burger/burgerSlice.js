@@ -8,16 +8,16 @@ export const burgerSlice = createSlice({
 			beacon: 0,
 			chease: 0,
 			salat: 0,
-			cocummber: 0,
+			cocumber: 0,
 			onion: 0,
 		},
 		ingridiensPrice: {
-			meat: 1,
-			beacon: 0.75,
-			chease: 0.5,
-			salat: 0.25,
-			cocummber: 0.25,
-			onion: 0.1,
+			meatPrice: 1,
+			beaconPrice: 0.75,
+			cheasePrice: 0.5,
+			salatPrice: 0.25,
+			cocumberPrice: 0.25,
+			onionPrice: 0.1,
 		},
 		totalPrice: 0,
 		loading: false,
@@ -52,11 +52,11 @@ export const burgerSlice = createSlice({
 			state.ingredientsAmount.salat -= 1;
 		},
 
-		moreCocummber: state => {
-			state.ingredientsAmount.cocummber += 1;
+		moreCocumber: state => {
+			state.ingredientsAmount.cocumber += 1;
 		},
-		lessCocummber: state => {
-			state.ingredientsAmount.cocummber -= 1;
+		lessCocumber: state => {
+			state.ingredientsAmount.cocumber -= 1;
 		},
 
 		moreOnion: state => {
@@ -66,7 +66,12 @@ export const burgerSlice = createSlice({
 			state.ingredientsAmount.onion -= 1;
 		},
 
-		calculatePrice: state => {},
+		calculatePrice: state => {
+			const {meat, beacon, chease, onion, cocumber, salat } = state.ingredientsAmount;
+			const {meatPrice, beaconPrice, cheasePrice, onionPrice, cocumberPrice, salatPrice } = state.ingridiensPrice;
+
+			state.totalPrice = meat * meatPrice + beacon * beaconPrice + chease * cheasePrice +  onion * onionPrice + cocumber * cocumberPrice + salat * salatPrice;
+		},
 		orderBurger: state => {},
 	},
 });
@@ -76,8 +81,8 @@ export const {
 	orderBurger,
 	moreOnion,
 	lessOnion,
-	moreCocummber,
-	lessCocummber,
+	moreCocumber,
+	lessCocumber,
 	moreBacon,
 	lessBacon,
 	moreMeat,
