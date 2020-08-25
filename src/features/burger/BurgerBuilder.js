@@ -22,7 +22,7 @@ import {
 import styles from './Burger.module.css';
 
 export function BurgerBuilder() {
-	const ingridiens = useSelector(ingridiensAmount);
+	const { meat, beacon, chease, onion, cocummber, salat } = useSelector(ingridiensAmount);
 	const price = useSelector(ingridiensPrice);
 	const total = useSelector(totalPrice);
 
@@ -38,13 +38,14 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreMeat())}>
 					+
 				</button>
-				<span className={styles.value}>Meat</span>
+
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessMeat())}>
 					-
 				</button>
+				<span className={styles.value}>Meat {meat}</span>
 			</div>
 			{/* BEACON */}
 			<div className={styles.row}>
@@ -54,13 +55,14 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreBacon())}>
 					+
 				</button>
-				<span className={styles.value}>Beacon</span>
+
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessBacon())}>
 					-
 				</button>
+    <span className={styles.value}>Beacon {beacon}</span>
 			</div>
 			{/* CHEASE */}
 			<div className={styles.row}>
@@ -70,13 +72,14 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreChease())}>
 					+
 				</button>
-				<span className={styles.value}>Chease</span>
+
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessChease())}>
 					-
 				</button>
+    <span className={styles.value}>Chease {chease}</span>
 			</div>
 
 			{/* ONION */}
@@ -87,13 +90,14 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreOnion())}>
 					+
 				</button>
-				<span className={styles.value}>Onion</span>
+
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessOnion())}>
 					-
 				</button>
+    <span className={styles.value}>Onion {onion}</span>
 			</div>
 			{/* COCUMBER */}
 			<div className={styles.row}>
@@ -103,13 +107,13 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreCocummber())}>
 					+
 				</button>
-				<span className={styles.value}>Cocummber</span>
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessCocummber())}>
 					-
 				</button>
+    <span className={styles.value}>Cocummber {cocummber}</span>
 			</div>
 			{/* SALAT */}
 			<div className={styles.row}>
@@ -119,13 +123,14 @@ export function BurgerBuilder() {
 					onClick={() => dispatch(moreSalat())}>
 					+
 				</button>
-				<span className={styles.value}>Salat</span>
+
 				<button
 					className={styles.button}
 					aria-label='More'
 					onClick={() => dispatch(lessSalat())}>
 					-
 				</button>
+    <span className={styles.value}>Salat {salat}</span>
 			</div>
 		</>
 	);
