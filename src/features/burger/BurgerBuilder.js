@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ingridiensAmount, totalPrice } from './burgerSlice';
+import { orderBurger, calculatePrice } from './burgerSlice';
 import {
-	ingridiensAmount,
-	ingridiensPrice,
-	totalPrice,
-	calculatePrice,
-	orderBurger,
 	moreMeat,
 	lessMeat,
 	moreBacon,
@@ -22,8 +19,16 @@ import {
 import styles from './Burger.module.css';
 
 export function BurgerBuilder() {
-	const { meat, beacon, chease, onion, cocummber, salat } = useSelector(ingridiensAmount);
-	const price = useSelector(ingridiensPrice);
+	useEffect(() => {
+		console.log('calculatePrice');
+        dispatch(calculatePrice());
+        // eslint-disable-next-line 
+	}, [totalPrice]);
+
+	const { meat, beacon, chease, onion, cocummber, salat } = useSelector(
+		ingridiensAmount
+	);
+
 	const total = useSelector(totalPrice);
 
 	const dispatch = useDispatch();
@@ -42,6 +47,7 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={meat === 0}
 					onClick={() => dispatch(lessMeat())}>
 					-
 				</button>
@@ -59,10 +65,11 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={beacon === 0}
 					onClick={() => dispatch(lessBacon())}>
 					-
 				</button>
-    <span className={styles.value}>Beacon {beacon}</span>
+				<span className={styles.value}>Beacon {beacon}</span>
 			</div>
 			{/* CHEASE */}
 			<div className={styles.row}>
@@ -76,10 +83,11 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={chease === 0}
 					onClick={() => dispatch(lessChease())}>
 					-
 				</button>
-    <span className={styles.value}>Chease {chease}</span>
+				<span className={styles.value}>Chease {chease}</span>
 			</div>
 
 			{/* ONION */}
@@ -94,10 +102,11 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={onion === 0}
 					onClick={() => dispatch(lessOnion())}>
 					-
 				</button>
-    <span className={styles.value}>Onion {onion}</span>
+				<span className={styles.value}>Onion {onion}</span>
 			</div>
 			{/* COCUMBER */}
 			<div className={styles.row}>
@@ -110,10 +119,11 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={cocummber === 0}
 					onClick={() => dispatch(lessCocummber())}>
 					-
 				</button>
-    <span className={styles.value}>Cocummber {cocummber}</span>
+				<span className={styles.value}>Cocummber {cocummber}</span>
 			</div>
 			{/* SALAT */}
 			<div className={styles.row}>
@@ -127,10 +137,11 @@ export function BurgerBuilder() {
 				<button
 					className={styles.button}
 					aria-label='More'
+					disabled={salat === 0}
 					onClick={() => dispatch(lessSalat())}>
 					-
 				</button>
-    <span className={styles.value}>Salat {salat}</span>
+				<span className={styles.value}>Salat {salat}</span>
 			</div>
 		</>
 	);
